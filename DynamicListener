@@ -1,0 +1,62 @@
+using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class DynamicListener : MonoBehaviour {
+
+    public string listeningTo = "Enter GameObject's tag";
+    public bool listeningToThis = false;
+    public bool parameter = false;
+    public string sendMessage = "Enter GameObject's method name";
+    public string stringParameter;
+    public bool onClick = false;
+
+    UnityEngine.UI.Button b;
+    GameObject objectListening;
+
+    void Start()
+    {
+        b = GetComponent<Button>();
+        GetObjectListening();
+    }
+
+    void GetObjectListening()
+    {
+        if (!listeningToThis)
+            objectListening = GameObject.FindGameObjectWithTag(listeningTo);
+        else
+            objectListening = gameObject;
+
+        if (objectListening)
+            SetListener();
+    }
+
+    void SetListener()
+    {
+        if (b)
+        {
+            if (onClick)
+            {
+                
+                if (!parameter)
+                    b.onClick.AddListener(() => objectListening.SendMessage(sendMessage));
+                else
+                    b.onClick.AddListener(() => objectListening.SendMessage(sendMessage, stringParameter));
+            }
+        }
+        else
+            Debug.Log("You have a dynamic listener on a null button.");
+       
+    }
+
+    void Update()
+    {
+        //this should be checked since it is likely objectListening is an object that is frequently reinstantiated
+        if (!objectListening)
+        {
+            GetObjectListening();
+        }
+    }
+
+}
