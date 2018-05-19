@@ -1,3 +1,5 @@
-# Unity3DDynamicUI
+# Unity3D Dynamic UI Classes
 
-This project will contain all of the code involved with the Unity3D Dynamic UI tutorial series on our channel.
+Want to learn more about these classes? Watch the tutorials here: https://www.youtube.com/playlist?list=PL4CCSwmU04MhI6oeuUZ-NRvhEye65PlFx
+
+These classes are pretty old, but they may be useful to someone out there. They were mainly created to serve as a platform for learning how to manipulate Unity3D UI elements with the (then) new 4.6 UI API.
